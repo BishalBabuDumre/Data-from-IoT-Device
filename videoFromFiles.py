@@ -1,58 +1,48 @@
-import csv
-import matplotlib
-matplotlib.use('agg')
-import matplotlib.pyplot as plt
+import cv2
+import os
+import re
 
-#Creating Bold Graph Edges and Fonts
-plt.rcParams["font.weight"] = "bold"
-plt.rcParams["axes.labelweight"] = "bold"
-plt.rcParams["axes.linewidth"] = 1.5
-plt.rcParams["axes.titleweight"] = "bold"
-plt.rcParams["axes.titlesize"] = 14
 
-# Open the CSV file for reading
-with open('2024-09-25.csv', mode='r') as file:
-    # Create a CSV reader with DictReader
-    csv_reader = csv.DictReader(file)
- 
-    # Initialize an empty list to store the dictionaries
-    data_list = []
- 
-    # Iterate through each row in the CSV file
-    for row in csv_reader:
-        # Append each row (as a dictionary) to the list
-        data_list.append(row)
- 
-# Print the list of dictionaries
-b = 0
-for data in data_list:
-    pv = float(data["Vpeak"])
-    pc = float(data["Ipeak"])
-    c = float(data["Isc"])
-    v = float(data["Voc"])
-    x = data["volts_curve"]
-    y = data["amps_curve"]
-    z = data["Date_Time"]
-    n = data["Name"]
-    x = x[1:]
-    x = x[:(len(x)-1)]
-    y = y[1:]
-    y = y[:(len(y)-1)]
-    plt.figure(figsize=(7,5))
-    x = list(x.split(","))
-    y = list(y.split(","))    
-    a = 0
-    for i in x:
-        x[a] = float(x[a])
-        y[a] = float(y[a])
-        a+=1
-    plt.plot(x,y, c = 'k')
-    plt.plot(0,c, c = 'b', marker = 'o', markersize = 20)
-    plt.plot(v,0, c = 'g', marker = 'X', markersize = 20)
-    plt.plot(pv,pc, c = 'r', marker = 'P', markersize = 20)
-    plt.title(n+', '+z)
-    plt.xlim(x[0]-0.02,x[len(x)-1]+0.05)
-    plt.xlabel("Voltage (V)")
-    plt.ylabel("Current in Circuit (A)")
-    plt.savefig('Fig-{0}.png'.format(b))
-    b+=1
+# Helper function to sort file names with numbers properly
+def natural_sort_key(s):
+    # This will split strings by digits to allow numerical sorting
+    return [int(text) if text.isdigit() else text.lower() for text in re.split(r'(\d+)', s)]
+
+def create_video_from_images(folder_path, output_video, frame_delay=0.3):
+    # Get all the PNG files from the folder
+    images = [img for img in os.listdir(folder_path) if img.endswith(".png")]
+    images.sort(key=natural_sort_key)  # Sort the images alphabetically or by number
+
+    if not images:
+        print("No PNG files found in the folder.")
+        return
+
+    # Load the first image to get the frame size
+    first_image_path = os.path.join(folder_path, images[0])
+    frame = cv2.imread(first_image_path)
+    height, width, layers = frame.shape
+
+    # Define the video codec and create a VideoWriter object
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Use 'mp4v' for .mp4 output
+    video = cv2.VideoWriter(output_video, fourcc, 1.0 / frame_delay, (width, height))
+
+    # Loop over all images and add them to the video
+    for image in images:
+        image_path = os.path.join(folder_path, image)
+        frame = cv2.imread(image_path)
+
+        # Check if the frame was loaded successfully
+        if frame is None:
+            print(f"Failed to load image {image}")
+            continue
+
+        video.write(frame)  # Add frame to the video
+
+    # Release the video writer object
+    video.release()
+    print(f"Video saved as {output_video}")
+
+# Usage example
+folder_path = 'IV'  # Folder containing PNG files
+output_video = 'output_video.mp4'  # Output video file name
+create_video_from_images(folder_path, output_video)
