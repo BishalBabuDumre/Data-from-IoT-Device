@@ -1,31 +1,33 @@
-import csv
+import pandas as pd
 import matplotlib
-matplotlib.use('agg')
+matplotlib.use('agg')  # Use Agg backend for non-GUI environments
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 from io import BytesIO
 from PIL import Image
+from datetime import date, timedelta
 
-#Creating Bold Graph Edges and Fonts
+# Set global plot properties
 plt.rcParams["font.weight"] = "bold"
 plt.rcParams["axes.labelweight"] = "bold"
 plt.rcParams["axes.linewidth"] = 1.5
 plt.rcParams["axes.titleweight"] = "bold"
 plt.rcParams["axes.titlesize"] = 14
 
+# Get yesterday's date
+yesterday = date.today() - timedelta(days=1)
+yesterday = yesterday.strftime('%Y-%m-%d')
+
 # OpenCV video setup
 def create_video_from_plots(csv_file, output_video, frame_delay=0.3):
-    # Open the CSV file for reading
-    with open(csv_file, mode='r') as file:
-        csv_reader = csv.DictReader(file)
-        data_list = []
-        for row in csv_reader:
-            data_list.append(row)
-    
+    # Read CSV using pandas and sort by 'Date_Time'
+    df = pd.read_csv(csv_file)
+    df = df.sort_values(by="Date_Time", ascending=True)  # Sort by 'Date_Time' column
+
     # Get the first plot to determine the video frame size
-    plt.figure(figsize=(7,5))
-    first_frame = plot_graph(data_list[0])  # Generate the first plot
+    plt.figure(figsize=(7, 5))
+    first_frame = plot_graph(df.iloc[0])  # Generate the first plot
     frame_height, frame_width, _ = first_frame.shape
 
     # Video writer setup
@@ -33,8 +35,8 @@ def create_video_from_plots(csv_file, output_video, frame_delay=0.3):
     video = cv2.VideoWriter(output_video, fourcc, 1.0 / frame_delay, (frame_width, frame_height))
 
     # Iterate over each row of data and create the plots
-    for data in data_list:
-        frame = plot_graph(data)  # Generate the plot
+    for _, row in df.iterrows():
+        frame = plot_graph(row)  # Generate the plot
         video.write(frame)  # Add frame to the video
 
     video.release()
@@ -77,6 +79,6 @@ def plot_graph(data):
     return img
 
 # Usage
-csv_file = '2024-09-25.csv'  # Your CSV file
-output_video = 'output_video.mp4'  # Name of the output video
+csv_file = f"{yesterday}.csv"  # Your CSV file path
+output_video = f"{yesterday}.mp4"  # Name of the output video
 create_video_from_plots(csv_file, output_video)
