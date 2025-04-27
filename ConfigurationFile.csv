@@ -1,0 +1,18 @@
+Channel #,Module Name,Module Type,Company,Email,Starting Date and Time,Ending Date,Comment,Pmax (W),Voc (V),Isc (A),Imp (A),Vmp (V),Area (cm2)
+,,,,,,,,,,,,,
+101,Module_1,Silicon,Company_1,"{“Company_1” : [“user_1@company_1.com”, “user_2@company_1.com”]}",10/30/21 0:00,,,4.713,1.79,4.313,3.369,1.399,225
+102,Module_2,Perovskite,Company_2,"{“Company_2” : [“user_1@company_2.com”, “user_2@company_2.com”]}",1/12/25 13:00,,,345,68.2,6.39,6.02,57.3,17500
+103,Module_3,Tandem,Company_2,,3/8/22 9:00,,,320,40.8,10.19,9.62,33.3,15000
+104,,,,,,,,,,,,,
+105,,,,,,,,,,,,,
+106,,,,,,,,,,,,,
+107,,,,,,,,,,,,,
+108,,,,,,,,,,,,,
+109,,,,,,,,,,,,,
+110,,,,,,,,,,,,,
+111,,,,,,,,,,,,,
+112,,,,,,,,,,,,,
+113,,,,,,,,,,,,,
+114,,,,,,,,,,,,,
+115,,,,,,,,,,,,,
+Keithley,,,,,,,,,,,,,
