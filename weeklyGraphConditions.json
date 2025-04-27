@@ -1,0 +1,26 @@
+{
+    "Efficiency": {
+            "label": "Efficiency (%)",
+            "map": "FillFactor" 
+    },
+    "PeakPower": {
+            "label": "Power (W)",
+            "map": "FillFactor" 
+    },
+    "Isc": {
+            "label": "Current (Amps)",
+            "map": "FillFactor" 
+    },
+    "Ipeak": {
+            "label": "Current (Amps)",
+            "map": "FillFactor" 
+    },
+    "Voc": {
+            "label": "Voltage (V)",
+            "map": "FillFactor" 
+    },
+    "Vpeak": {
+            "label": "Voltage (V)",
+            "map": "FillFactor" 
+    }
+}

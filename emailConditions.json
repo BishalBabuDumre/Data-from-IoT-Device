@@ -1,0 +1,45 @@
+{
+    "Irr" : "Irradiance & Peak Power VS Time of the Day",
+
+    "Temp" : "Temperature VS Time of the Day",
+
+    "Ffac" : "Fill Factor VS Time of the Day",
+
+    "Ipeak" : "Imax/Irr VS Time of the Day from MPPT",
+
+    "Immax" : "Imax/Irr VS Time of the Day from I-V Scans",
+
+    "Imax" : "Imax VS Time of the Day from I-V Scans",
+
+    "Ppeak" : "Pmax VS Time of the Day from MPPT",
+
+    "Vpeak" : "Vmax VS Time of the Day from MPPT",
+
+    "Vmax" : "Vmax VS Time of the Day from I-V Scans",
+
+    "Isc" : "Isc VS Time of the Day from I-V Scans",
+
+    "Voc" : "Voc VS Time of the Day from I_V Scans",
+
+    "ISCandVOC" : "Isc VS Voc from I-V Scans",
+
+    "Wind" : "Wind Speed VS Time of the Day",
+
+    "Hum" : "Humidity VS Time of the Day",
+
+    "SerRes": "Series Resistance VS Time of the Day",
+
+    "IscVSdays" : "Isc VS No. of Days for {sample} from I-V Scans",
+
+    "IpeakVSdays" : "Imax VS No. of Days for {sample} from I-V Scans",
+
+    "VocVSdays" : "Voc VS No. of Days for {sample} from I-V Scans",
+
+    "VpeakVSdays" : "Vmax VS No. of Days for {sample} from I-V Scans",
+
+    "EfficiencyVSdays" : "Efficiency VS No. of Days for {sample} from I-V Scans",
+
+    "PeakPowerVSdays" : "Pmax VS No. of Days for {sample} from I-V Scans",
+
+    "SerResisVSdays" : "Series Resistance VS No. of Days for {sample} from I-V Scans"
+}

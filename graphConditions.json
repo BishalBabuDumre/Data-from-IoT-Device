@@ -1,0 +1,298 @@
+{
+    "Irradiation & Peak Power VS Time of the Day": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "Pyro (POA)": {
+                    "val": "pyro_CMP3_xml",
+                    "norm": "Irr"
+                },
+                "Pyro (Horizontal)": {
+                    "val": "pyro_7F3_xml",
+                    "norm": "Irr"
+                },
+                "Si Ref 061": {
+                    "val": "si_ref_061_xml",
+                    "norm": "Irr"
+                },
+                "Si Ref 058": {
+                    "val": "si_ref_058_xml",
+                    "norm": "Irr"
+                },
+                "{sample_name}": {
+                    "val": "peak_power_xml",
+                    "norm": "Pmax"
+                }
+            },
+            "label": "Irradiance & Peak Power Normalized"
+        },
+        "file_name": "Irr"
+    },
+    "Temperature VS Time of the Day": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "Ambient": {
+                    "val": "ambient_temp_xml",
+                    "norm": "One"
+                },
+                "Top of MT5": {
+                    "val": "mt5_temp_xml",
+                    "norm": "One"
+                },
+                "{sample_name}_1": {
+                    "val": "temp_1_xml",
+                    "norm": "One"
+                },
+                "{sample_name}_2": {
+                    "val": "temp_2_xml",
+                    "norm": "One"
+                },
+                "{sample_name}_3": {
+                    "val": "temp_3_xml",
+                    "norm": "One"
+                },
+                "{sample_name}_4": {
+                    "val": "temp_4_xml",
+                    "norm": "One"
+                }
+            },
+            "label": "Temperature ($\\mathregular{^{\\circ}}$C)"
+        },
+        "file_name": "Temp"
+    },
+    "Fill Factor VS Time of the Day": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "ff_xml",
+                    "norm": "One"
+                }
+            },
+            "label": "Fill Factor (%)",
+            "limit": [0, 100]
+        },
+        "file_name": "Ffac"
+    },
+    "Wind Speed VS Time of the Day": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "wind_speed_xml",
+                    "norm": "One"
+                }
+            },
+            "label": "Wind Speed (m/s)"
+        },
+        "file_name": "Wind"
+    },
+    "Humidity VS Time of the Day": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "humidity_xml",
+                    "norm": "One"
+                }
+            },
+            "label": "Humidity (%)"
+        },
+        "file_name": "Hum"
+    },
+    "Isc VS Time of the Day": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "isc_xml",
+                    "norm": "Isc"
+                }
+            },
+            "label": "Normalized Current"
+        },
+        "file_name": "Isc"
+    },
+    "Voc VS Time of the Day": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "voc_xml",
+                    "norm": "Voc"
+                }
+            },
+            "label": "Normalized Voltage"
+        },
+        "file_name": "Voc"
+    },
+    "Isc VS Voc": {
+        "x": {
+            "var": {
+                "Voltage (V)": "voc_xml"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "isc_xml",
+                    "norm": "One"
+                }
+            },
+            "label": "Current (A)"
+        },
+        "file_name": "ISCandVOC",
+        "twin" : "True"
+    },
+    "Imax/Irr VS Time of the Day from I-V Scans": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "imax_by_irr",
+                    "norm": "imaxBYirr"
+                }
+            },
+            "label": "Normalized (Current/Irradiance)",
+            "limit": [0, 1.1]
+        },
+        "file_name": "Immax"
+    },
+    "Imax VS Time of the Day from I-V Scans": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "peak_curr_xml",
+                    "norm": "Imax"
+                }
+            },
+            "label": "Normalized Current"
+        },
+        "file_name": "Imax"
+    },
+    "Imax/Irr VS Time of the Day from MPPT": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day_mtd"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "imax_by_irr_mtd",
+                    "norm": "imaxBYirr"
+                }
+            },
+            "label": "Normalized (Current/Irradiance)",
+            "limit": [0, 1.1]
+        },
+        "file_name": "Ipeak"
+    },
+    "Vmax VS Time of the Day from MPPT": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day_mtd"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "vmax_mtd",
+                    "norm": "Vmax"
+                }
+            },
+            "label": "Normalized Voltage"
+        },
+        "file_name": "Vpeak"
+    },
+    "Pmax VS Time of the Day from MPPT": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day_mtd"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "pmax_mtd",
+                    "norm": "Pmax"
+                }
+            },
+            "label": "Normalized Power"
+        },
+        "file_name": "Ppeak"
+    },
+    "Vmax VS Time of the Day from I-V Scans": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "peak_volt_xml",
+                    "norm": "Vmax"
+                }
+            },
+            "label": "Normalized Voltage"
+        },
+        "file_name": "Vmax"
+    },
+    "Series Resistance VS Time of the Day from I-V Scans": {
+        "x": {
+            "var": {
+                "Time of the Day ({yesterday})": "time_of_day"
+            }
+        },
+        "y": {
+            "var": {
+                "{sample_name}": {
+                    "val": "series_resist",
+                    "norm": "One"
+                }
+            },
+            "label": "Series Resistance (Ω)",
+            "limit": [0, 100]
+        },
+        "file_name": "SerRes"
+    }
+}

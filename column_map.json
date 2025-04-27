@@ -1,0 +1,22 @@
+{
+    "Temperature_Ambient": "ambient_temp_xml",
+    "Temperature_Top of MT": "mt5_temp_xml",
+    "auxInput_converted_value_Wind Speed": "wind_speed_xml",
+    "auxInput_converted_value_Humidity (relative)": "humidity_xml",
+    "Irradiance_after_Pyranometer CMP3": "pyro_CMP3_xml",
+    "Irradiance_before_NONE  Pyranometer 7F3": "pyro_7F3_xml",
+    "Irradiance_after_Irrad Si-Ref 061": "si_ref_061_xml",
+    "Irradiance_after_Irrad Si-Ref 058": "si_ref_058_xml",
+    "PeakPower": "peak_power_xml",
+    "Vpeak": "peak_volt_xml",
+    "Ipeak": "peak_curr_xml",
+    "Voc": "voc_xml",
+    "Isc": "isc_xml",
+    "Calculated_Vmp": "peak_volt_calculated",
+    "Calculated_Imp": "peak_curr_calculated",
+    "Calculated_Voc": "voc_calculated",
+    "Calculated_Isc": "isc_calculated",
+    "FillFactor": "ff_xml",
+    "Series_Resistance": "series_resist"
+}
+
