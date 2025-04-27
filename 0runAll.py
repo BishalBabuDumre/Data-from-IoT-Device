@@ -1,0 +1,13 @@
+script1 = __import__('1KeithleyDownload') #Downloads data from another computer related to measurement by Keithley.
+script2 = __import__('2Ftp_script_MTDs') #Downloads MTD files related to Maximum Power Point Tracking into the local computer.
+script3 = __import__('3Ftp_script_XMLs') #Download XML files related to I-V scans into the local computer.
+script4 = __import__('4Summary_script_XMLs') #It changes XML files into CSV files for further processing.
+script5 = __import__('5Data_Processing_Summaries') #It creates files in "Cleaned" folder by aggregating all the data for a single module and also calculating Days on Sun which is used in weekly plots.
+script6 = __import__('6EvolutionResistance') #It calculates Series Resistance column for an I-V curve using following paper: https://doi.org/10.1016/0379-6787(89)90050-1
+script7 = __import__('7Local_Data_Archive') #It archives CSV files into proper local computer locations.
+script8 = __import__('8Removing_Files_From_Server') #It removes files from the IoT hard disk to free up space.
+script9 = __import__('9Graphs') #It creates graphs of our analysis getting data from both CSV and MTD files.
+script10 = __import__('10Video') #It creates videos for each channel out of the I-V curves.
+script11 = __import__('11WeeklyFigures') #It graphs figures that we analyze on weekly basis.
+script12 = __import__('12EmailGeneration') #This sends emails.
+script13 = __import__('13UploadBox') #This uploads all the relevant data from CSV files to graphs into the online platform (eg. Box).
