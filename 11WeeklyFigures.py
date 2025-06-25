@@ -72,12 +72,15 @@ def dataClean(fileRoad, area):
 
         df = df.query("-3 < Si_ref_058_delta < 3").copy()
         df = df.query("days_on_sun > 0").copy()
-        df = df.query("0 < FillFactor < 100").copy()
 
         df.loc[:, "Irrad_Si_Ref_058"] = df["Irradiance_before_Irrad Si-Ref 058"]
         df.loc[:, 'Efficiency'] = (df['PeakPower'] / df["Irrad_Si_Ref_058"])*1000000/area
-        X = df[['FillFactor']]
-        clf = IsolationForest(contamination='auto')
+        columns_to_extract = ['Vpeak', 'Ipeak', 'Voc', 'Isc', 'Temp1', 'Temp2', 'Temperature_Ambient', 'Temperature_Top of MT',
+                    'auxInput_converted_value_Humidity (relative)', 'auxInput_converted_value_Wind Speed', 
+                    'Irradiance_before_Irrad Si-Ref 058', 'Irradiance_before_Irrad Si-Ref 061']
+        
+        X = df[columns_to_extract]
+        clf = IsolationForest('n_estimators': 50, 'max_samples': 0.9084561500050461, 'max_features': 12, contamination='auto')#Hyperparameters obtained from Bayesian Optimization as in hyperparameterTuningForAnomalyDetection.py
         outliers = clf.fit_predict(X)
         df['outlier'] = outliers 
         df = df[df['outlier'] == 1]
