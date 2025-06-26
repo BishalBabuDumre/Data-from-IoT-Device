@@ -63,13 +63,13 @@ def retrain_pipeline():
 
         # Using mean decision_function as objective score
         scores = pipeline.named_steps['model'].decision_function(X)
-        mean_score = np.mean(scores)
+        std_score = np.std(scores)
 
         # Log parameters & score to wandb
         wandb.log(params)
-        wandb.log({'mean_decision_function': mean_score})
+        wandb.log({'std_decision_function': std_score})
 
-        return mean_score
+        return std_score
 
     # Run Optuna study
     study = optuna.create_study(direction='maximize')
