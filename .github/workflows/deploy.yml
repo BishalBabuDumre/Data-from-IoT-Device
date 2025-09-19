@@ -1,0 +1,25 @@
+name: Deploy to Remote Laptop
+
+on:
+  push:
+    branches: [ main ]   # Trigger on pushes to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Deploy code to remote laptop via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.REMOTE_SSH_KEY }}
+        port: 22
+        script: |
+          cd ~/my_project   # folder where repo lives on laptop
+          git pull origin main
+          echo "Deployment complete!"
