@@ -4,6 +4,9 @@ on:
   push:
     branches: [ main ]   # Trigger on pushes to main branch
 
+  # Manual trigger
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
