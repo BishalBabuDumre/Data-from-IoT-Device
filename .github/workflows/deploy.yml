@@ -20,6 +20,6 @@ jobs:
         key: ${{ secrets.REMOTE_SSH_KEY }}
         port: 22
         script: |
-          cd ~/my_project   # folder where repo lives on laptop
+          cd ~/Documents/Solar_IoT   # folder where repo lives on laptop
           git pull origin main
           echo "Deployment complete!"
