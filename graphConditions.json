@@ -1,5 +1,5 @@
 {
-    "Irradiation & Peak Power VS Time of the Day": {
+    "Irradiation & Peak Power VS Time of Day": {
         "x": {
             "var": {
                 "Time of the Day ({yesterday})": "time_of_day"
