@@ -26,3 +26,25 @@ jobs:
           cd ~/Documents/Solar_IoT   # folder where repo lives on laptop
           git pull origin main
           echo "Deployment complete!"
+          
+    - name: Notify on fork or push
+      if: github.event_name == 'fork' || (github.event_name == 'push' && github.actor != 'BishalBabuDumre')
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const bodyLines = [
+            `Activity type: ${context.eventName}`,
+            `Triggered by: @${context.actor}`,
+            `Branch: ${context.ref}`,
+            context.payload.head_commit ? `Commit message: ${context.payload.head_commit.message}` : '',
+            context.payload.head_commit ? `Commit SHA: ${context.sha}` : '',
+            `View details: ${context.payload.repository.html_url}/actions/runs/${context.runId}`
+          ].filter(Boolean).join('\n\n');
+
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: `Repository activity by ${context.actor}`,
+            body: bodyLines,
+            labels: ['notification']
+          })
